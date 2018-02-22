@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LeadMgmt.Web.Models.LeadModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Register">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BestTimeToCall)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeadType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BestTimeToCall)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Register", new { id = item.ID }) |
+
+                    <input type="button" value="Delete" class="btn-link" onclick="deleteLead(@item.ID)" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts { 
+    <script src="~/scripts/register.js"></script>
+}
